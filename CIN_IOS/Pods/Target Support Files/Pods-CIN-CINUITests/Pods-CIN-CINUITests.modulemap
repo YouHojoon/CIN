@@ -1,0 +1,6 @@
+framework module Pods_CIN_CINUITests {
+  umbrella header "Pods-CIN-CINUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
