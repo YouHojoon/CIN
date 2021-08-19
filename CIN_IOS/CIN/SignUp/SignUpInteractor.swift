@@ -1,35 +1,34 @@
 //
-//  RootInteractor.swift
+//  SignUpInteractor.swift
 //  CIN
 //
-//  Created by 유호준 on 2021/08/19.
+//  Created by 유호준 on 2021/08/20.
 //
 
 import RIBs
 import RxSwift
 
-protocol RootRouting: ViewableRouting {
+protocol SignUpRouting: ViewableRouting {
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
 }
 
-protocol RootPresentable: Presentable {
-    var listener: RootPresentableListener? { get set }
+protocol SignUpPresentable: Presentable {
+    var listener: SignUpPresentableListener? { get set }
     // TODO: Declare methods the interactor can invoke the presenter to present data.
-    
 }
 
-protocol RootListener: AnyObject {
+protocol SignUpListener: AnyObject {
     // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
 }
 
-final class RootInteractor: PresentableInteractor<RootPresentable>, RootInteractable, RootPresentableListener {
+final class SignUpInteractor: PresentableInteractor<SignUpPresentable>, SignUpInteractable, SignUpPresentableListener {
 
-    weak var router: RootRouting?
-    weak var listener: RootListener?
+    weak var router: SignUpRouting?
+    weak var listener: SignUpListener?
 
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
-    override init(presenter: RootPresentable) {
+    override init(presenter: SignUpPresentable) {
         super.init(presenter: presenter)
         presenter.listener = self
     }

@@ -33,7 +33,8 @@ final class RootBuilder: Builder<RootDependency>, RootBuildable {
         let component = RootComponent(dependency: dependency)
         let viewController = RootViewController()
         let interactor = RootInteractor(presenter: viewController)
+        let loggedOutBuilder = LoggedOutBuilder(dependency: component)
         
-        return RootRouter(interactor: interactor, viewController: viewController)
+        return RootRouter(interactor: interactor, viewController: viewController, loggedOutBuilder: loggedOutBuilder)
     }
 }

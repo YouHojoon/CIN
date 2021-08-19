@@ -21,6 +21,15 @@ final class RootViewController: UIViewController, RootPresentable, RootViewContr
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .blue
+    }
+    
+    func present(viewControllable: ViewControllable) {
+        self.present(viewControllable.uiviewController, animated: false, completion: nil)
+    }
+    
+    func dismiss(viewControllable: ViewControllable) {
+        if viewControllable.uiviewController === presentedViewController {
+            self.dismiss(animated: false, completion: nil)
+        }
     }
 }

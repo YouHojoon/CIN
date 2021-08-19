@@ -1,5 +1,5 @@
 //
-//  RootInteractor.swift
+//  LoggedInInteractor.swift
 //  CIN
 //
 //  Created by 유호준 on 2021/08/19.
@@ -8,31 +8,23 @@
 import RIBs
 import RxSwift
 
-protocol RootRouting: ViewableRouting {
+protocol LoggedInRouting: Routing {
+    func cleanupViews()
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
 }
 
-protocol RootPresentable: Presentable {
-    var listener: RootPresentableListener? { get set }
-    // TODO: Declare methods the interactor can invoke the presenter to present data.
-    
-}
-
-protocol RootListener: AnyObject {
+protocol LoggedInListener: AnyObject {
     // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
 }
 
-final class RootInteractor: PresentableInteractor<RootPresentable>, RootInteractable, RootPresentableListener {
+final class LoggedInInteractor: Interactor, LoggedInInteractable {
 
-    weak var router: RootRouting?
-    weak var listener: RootListener?
+    weak var router: LoggedInRouting?
+    weak var listener: LoggedInListener?
 
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
-    override init(presenter: RootPresentable) {
-        super.init(presenter: presenter)
-        presenter.listener = self
-    }
+    override init() {}
 
     override func didBecomeActive() {
         super.didBecomeActive()
@@ -41,6 +33,8 @@ final class RootInteractor: PresentableInteractor<RootPresentable>, RootInteract
 
     override func willResignActive() {
         super.willResignActive()
+
+        router?.cleanupViews()
         // TODO: Pause any business logic.
     }
 }
