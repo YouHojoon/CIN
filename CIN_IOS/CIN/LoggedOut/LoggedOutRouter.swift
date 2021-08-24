@@ -31,6 +31,7 @@ final class LoggedOutRouter: ViewableRouter<LoggedOutInteractable, LoggedOutView
     func routeToSignUp(){
         let signUp = self.signUpBuilder.build(withListener: self.interactor)
         self.viewController.present(viewController: signUp.viewControllable)
+        self.attachChild(signUp)
     }
     
     //MARK: - Private

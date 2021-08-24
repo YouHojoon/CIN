@@ -4,7 +4,7 @@
 target 'CIN' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
+  source 'https://github.com/CocoaPods/Specs.git'
   # Pods for CIN
   pod 'RxSwift', '~> 4.0'
   pod 'RxCocoa', '~> 4.0'
@@ -17,6 +17,7 @@ target 'CIN' do
   pod 'ObjectMapper'
   pod 'SwiftyJSON'
   pod 'Then'
+  pod 'TextFieldEffects'
   
   target 'CINTests' do
     inherit! :search_paths

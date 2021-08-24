@@ -42,4 +42,33 @@ final class SignUpInteractor: PresentableInteractor<SignUpPresentable>, SignUpIn
         super.willResignActive()
         // TODO: Pause any business logic.
     }
+    
+    func passwordVerification(password: String) -> Bool {
+        if password.isEmpty == false{
+            if password.count >= 8{
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    func nameVerification(name: String) -> Bool {
+        if name.isEmpty == false{
+            if name.count >= 2{
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    func phoneVerification(middle: String, last: String) -> Bool {
+        if middle.count < 3 || last.count < 4{
+            return false
+        }
+        else{
+            return true
+        }
+    }
 }

@@ -37,7 +37,7 @@ final class LoggedOutViewController: UIViewController, LoggedOutPresentable, Log
     
     func present(viewController: ViewControllable) {
         viewController.uiviewController.modalPresentationStyle = .fullScreen
-        viewController.uiviewController.modalTransitionStyle = .flipHorizontal
+        viewController.uiviewController.modalTransitionStyle = .crossDissolve
         
         self.present(viewController.uiviewController, animated: true, completion: nil)
     }
@@ -61,13 +61,12 @@ final class LoggedOutViewController: UIViewController, LoggedOutPresentable, Log
     private weak var findPasswordButton: UIButton!
     private weak var signUpButton: UIButton!
     
-    
     private weak var titleLabel1: UILabel!
     private weak var titleLabel2: UILabel!
     private weak var titleLabel3: UILabel!
     
     private var disposeBag = DisposeBag()
-    
+
     private func setLayout(){  
         self.titleLabel1 = UILabel().then{
             $0.text = "Camping"
@@ -75,7 +74,7 @@ final class LoggedOutViewController: UIViewController, LoggedOutPresentable, Log
             
             self.view.addSubview($0)
             $0.snp.makeConstraints{
-                $0.top.equalTo(self.view.safeAreaLayoutGuide).inset(150)
+                $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).inset(120)
                 $0.leading.equalTo(self.view).inset(30)
             }
         }
@@ -118,6 +117,7 @@ final class LoggedOutViewController: UIViewController, LoggedOutPresentable, Log
         self.passwordTextField = UITextField().then{
             $0.placeholder = "Password"
             $0.borderStyle = .roundedRect
+            $0.textContentType = .password
             
             self.view.addSubview($0)
             $0.snp.makeConstraints{
@@ -136,7 +136,7 @@ final class LoggedOutViewController: UIViewController, LoggedOutPresentable, Log
             $0.snp.makeConstraints{
                 $0.width.equalTo(self.idTextField.snp.width)
                 $0.height.equalTo(5)
-                $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-80)
+                $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-80)
                 $0.centerX.equalTo(self.view)
             }
         }
